@@ -4,12 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Profile Card</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        #profile-image-input {
+            display: none;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            cursor: pointer;
+            border: 4px solid #3498db;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .profile-image:hover {
+            border-color: #e74c3c;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            color: #e74c3c;
+        }
+    </style>
+    <title> Profile Card</title>
 </head>
 <body>
     <div class="profile-card">
         <label for="profile-image-input">
-            <img id="profile-image" src="your_image_url_here" alt="Profile Image" class="profile-image">
+            <img id="profile-image" src="" alt="Profile Image" class="profile-image">
         </label>
         <input type="file" id="profile-image-input" accept="image/*" onchange="displayImage(this)">
         <h2>Hanan Fathima K</h2>
@@ -22,71 +89,26 @@
     </div>
 
     <script>
+        const storedImageUrl = localStorage.getItem('profileImage');
+
+        if (storedImageUrl) {
+            document.getElementById('profile-image').src = storedImageUrl;
+        }
+
         function displayImage(input) {
             const profileImage = document.getElementById('profile-image');
             const file = input.files[0];
             const reader = new FileReader();
 
             reader.onload = function(e) {
-                profileImage.src = e.target.result;
+                const imageUrl = e.target.result;
+                profileImage.src = imageUrl;
+
+                localStorage.setItem('profileImage', imageUrl);
             };
 
             reader.readAsDataURL(file);
         }
     </script>
 </body>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.profile-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-#profile-image-input {
-    display: none;
-}
-
-.profile-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-h2 {
-    color: #333;
-}
-
-p {
-    color: #666;
-}
-
-.social-icons {
-    margin-top: 20px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-    color: #3498db;
-    text-decoration: none;
-}
-</style>
-    
-    
-    
-    
 </html>
