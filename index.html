@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Profile Card</title>
+</head>
+<body>
+    <div class="profile-card">
+        <label for="profile-image-input">
+            <img id="profile-image" src="your_image_url_here" alt="Profile Image" class="profile-image">
+        </label>
+        <input type="file" id="profile-image-input" accept="image/*" onchange="displayImage(this)">
+        <h2>Hanan Fathima K</h2>
+        <p>BTech CSE Student</p>
+
+        <div class="social-icons">
+            <a href="https://instagram.com/hanan_.fathima?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="www.linkedin.com/in/hanan-fathima-kallikkal-184057285" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function displayImage(input) {
+            const profileImage = document.getElementById('profile-image');
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                profileImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#profile-image-input {
+    display: none;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #3498db;
+    text-decoration: none;
+}
+</style>
+    
+    
+    
+    
+</html>
