@@ -58,44 +58,16 @@
 </head>
 <body>
     <div class="profile-card">
-        <label for="profile-image-input">
-            <img id="profile-image" src="" alt="Profile Image" class="profile-image">
-        </label>
-        <input type="file" id="profile-image-input" accept="image/*" onchange="displayImage(this)">
+        <img src=""C:\Users\Habeeb Rahman\Desktop\photo\Screenshot (469).png"" alt="Profile Image" class="profile-image">
         <h2>Hanan Fathima K</h2>
         <p>BTech CSE Student</p>
 
         <div class="social-icons">
             <a href="https://instagram.com/hanan_.fathima?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="www.linkedin.com/in/hanan-fathima-kallikkal-184057285
-
-            " target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/hanan-fathima-kallikkal/" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
     </div>
 
-    <script>
-        // Retrieve image URL from local storage on page load
-        const storedImageUrl = localStorage.getItem('profileImage');
-
-        if (storedImageUrl) {
-            document.getElementById('profile-image').src = storedImageUrl;
-        }
-
-        function displayImage(input) {
-            const profileImage = document.getElementById('profile-image');
-            const file = input.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const imageUrl = e.target.result;
-                profileImage.src = imageUrl;
-
-                // Save image URL to local storage
-                localStorage.setItem('profileImage', imageUrl);
-            };
-
-            reader.readAsDataURL(file);
-        }
-    </script>
+    
 </body>
 </html>
