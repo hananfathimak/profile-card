@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -16,13 +16,11 @@
         }
 
         .profile-card {
-            background-color: #fff;
+            background-color: #0d0d0d;
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
-            max-width: 100%;
         }
 
         #profile-image-input {
@@ -30,53 +28,33 @@
         }
 
         .profile-image {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             cursor: pointer;
-            border: 4px solid #3498db;
-            transition: border-color 0.3s ease-in-out;
-        }
-
-        .profile-image:hover {
-            border-color: #e74c3c;
         }
 
         h2 {
-            color: #333;
-            margin-bottom: 10px;
+            color: #ffffff;
         }
 
         p {
-            color: #666;
-            margin-bottom: 20px;
+            color: #ecdede;
         }
 
         .social-icons {
-            display: flex;
-            justify-content: center;
+            margin-top: 20px;
         }
 
         .social-icons a {
-            margin: 0 15px;
+            margin: 0 10px;
             color: #3498db;
             text-decoration: none;
-            font-size: 24px;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .social-icons a:hover {
-            color: #e74c3c;
-        }
-
-        /* Add this style for setting cookies */
-        .hidden {
-            display: none;
         }
     </style>
-    <title>Stunning Profile Card</title>
+    <title>Profile Card</title>
 </head>
 <body>
     <div class="profile-card">
@@ -88,17 +66,16 @@
         <p>BTech CSE Student</p>
 
         <div class="social-icons">
-            <a href="your_instagram_url_here" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="your_linkedin_url_here" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/hanan_.fathima?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="www.linkedin.com/in/hanan-fathima-kallikkal-184057285
+
+            " target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
     </div>
 
-    <!-- Add this hidden div for setting cookies -->
-    <div id="cookieDiv" class="hidden"></div>
-
     <script>
-        // Retrieve image URL from cookies on page load
-        const storedImageUrl = getCookie('profileImage');
+        // Retrieve image URL from local storage on page load
+        const storedImageUrl = localStorage.getItem('profileImage');
 
         if (storedImageUrl) {
             document.getElementById('profile-image').src = storedImageUrl;
@@ -113,33 +90,11 @@
                 const imageUrl = e.target.result;
                 profileImage.src = imageUrl;
 
-                // Save image URL to cookies with a long expiration date
-                setCookie('profileImage', imageUrl, 365); // 365 days expiration
+                // Save image URL to local storage
+                localStorage.setItem('profileImage', imageUrl);
             };
 
             reader.readAsDataURL(file);
-        }
-
-        // Function to set a cookie
-        function setCookie(name, value, days) {
-            const expires = new Date();
-            expires.setDate(expires.getDate() + days);
-            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
-        }
-
-        // Function to get a cookie value
-        function getCookie(name) {
-            const cookieArr = document.cookie.split(';');
-
-            for (let i = 0; i < cookieArr.length; i++) {
-                const cookiePair = cookieArr[i].split('=');
-
-                if (cookiePair[0].trim() === name) {
-                    return decodeURIComponent(cookiePair[1]);
-                }
-            }
-
-            return null;
         }
     </script>
 </body>
